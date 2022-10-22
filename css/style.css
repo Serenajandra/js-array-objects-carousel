@@ -1,24 +1,39 @@
-.image{
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
 
+.ms_active{
+    display: block;
+}
+.ms_none{
+    display: none;
 }
 
-.card{
-    width: 70%;
-    height: 60vh;
+.image{
+    object-fit: cover;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.ms_card{
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
 }
 
 .row{
-    margin: 8rem auto;
+    margin: 10vh auto;
+    width: 100%;
+    height: 80vh;
+}
+.col{
+    width: 80%;
+    height: 80%;
 }
 
-.text_container{
+#text_container{
     color:white;
     bottom: 0;
-    list-style-type: none;
+    
 }
 
 .prev,
@@ -26,6 +41,7 @@
     width: 3rem;
     height: 3rem;
     text-align: center;
+    z-index: 999;
     /* vertical-align: midle; */
 
     border-radius: 50%;
@@ -38,9 +54,9 @@
 }
 
 .next{
-    right: 0.5rem;
+    right: 1rem;
 }
 
 .prev{
-    left: 0.5rem;
+    left: 1rem;
 }

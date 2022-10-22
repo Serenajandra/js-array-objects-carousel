@@ -24,24 +24,123 @@ const images = [
 
 // console.log(images.)
 
-// prendo le immagini dell'array e creo un nuovo array di sole immagini
+// prendo le key dell'array e creo 3 nuovi array
 const imagesArray = []
-images.forEach((key,index)=>{
+const titleArray = []
+const textArray = []
+images.forEach((key)=>{
     // console.log(index, key.image)
-    imagesArray.push(key.image)
-
+    imagesArray.push(key.image);
+    titleArray.push(key.title);
+    textArray.push(key.text);
 })
-console.log(imagesArray)
+console.log(imagesArray, titleArray, textArray)
 
-imagesArray.forEach((key)=>{
-const imgContainer = document.getElementById("card");
-console.log(imgContainer)
-imgContainer.innerHTML += `<img class="image" src="${key}" alt="">`
+// inserisco dinamicamente l'array delle immagini nel file html
+const imgContainer = document.getElementById("img_container");
+
+imagesArray.forEach((image)=>{    
+    console.log(image)
+    imgContainer.innerHTML += `
+    <div id= "card" class=" ms_card ms_none postiton-relative">
+        <img class="image position-absolute" src="${image}" alt="">
+    </div>`
 })
 
+// Creo un nuovo Array composto dalla didascalia delle immagini e le inserisco dinamicamente nel file html
+
+
+const titleTextArray = []
+    images.forEach((key)=>{
+    imgContainer.innerHTML += `
+    <div id="text_container" class="txt_section ms_none position-absolute">
+        <p class="">${key.title}</p>
+        <p>${key.text}</p>
+    </div>        
+    `;
+})
+
+// Imposto la slide iniziale senza display none
+const img = document.getElementsByClassName("ms_card");
+let activeImg = 0;
+img[activeImg].classList.remove("ms_none");
+console.log(img[activeImg])
+
+// Imposto la didascalia iniziale senza display none
+const textContainer = document.getElementsByClassName("txt_section")
+let activeTxt = 0;
+textContainer[activeTxt].classList.remove("ms_none");
+
+// NAVIGAZIONE
+const nextBtn = document.querySelector(".next");
+nextBtn.addEventListener("click", function(){
+    // Rimetto display-none all'immagine e alla didascalia corrente
+    img[activeImg].classList.add("ms_none");
+    textContainer[activeTxt].classList.add("ms_none");
+    if (activeImg < img.length - 1) {
+        // passo alla prossima img
+        activeImg++;
+    } else{
+        activeImg = 0;
+    };
+
+    if (activeTxt < textContainer.length - 1) {
+        // passo alla prossima img
+        activeTxt++;
+    } else{
+        activeTxt = 0;
+    }
+    
+    // Rimuovo display none alla prossima img e alla prossima didascalia
+    img[activeImg].classList.remove("ms_none");
+    textContainer[activeTxt].classList.remove("ms_none");
+    
+})
+// for (let i = 0; i < imagesArray.length; i++) {
+//     const thisImg = array[i];
+//     thisImg.classList.add("active")
+//     i++
+//     thisImg.classList.remove("active")
+    
+// }
 
 
 
+
+
+
+    // const titleTextArray =[]
+    // title = titleArray.forEach((title)=>{
+    //     // console.log(imgContainer)
+    //     console.log(title)
+    //     titleTextArray.push(title);
+    //     console.log(titleTextArray)
+
+    //     // imageContainer.innerHTML += `<p>${title} </p>`
+    // })
+
+    // text = textArray.forEach((text)=>{
+    //     // const textContainer = document.getElementById("text_container");
+    //     // console.log(imgContainer)
+    //     console.log(text)
+    //     // textContainer.innerHTML += ` `
+    //     return text;
+    // })
+
+
+
+    
+    // cardContainer.innerHTML += ` 
+    //     <div id="img_container" class="col">
+    //         <div id= "card" class=" postiton-relative">
+    //             <img class="image" src="${image}" alt=""></img>
+    //             <ul id="text_container"class="position-absolute">
+    //                 <li><${title}</li>
+    //                 <li>${text}</li>
+    //             </ul>
+    //         </div>
+    //     </div>`
+// }
 // let imgList = "";
 // let thisImg = "";
 // for(let i = 0; i<images.length; i++){
