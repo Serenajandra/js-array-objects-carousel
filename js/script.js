@@ -48,8 +48,6 @@ imagesArray.forEach((image)=>{
 })
 
 // Creo un nuovo Array composto dalla didascalia delle immagini e le inserisco dinamicamente nel file html
-
-
 const titleTextArray = []
     images.forEach((key)=>{
     imgContainer.innerHTML += `
@@ -94,15 +92,37 @@ nextBtn.addEventListener("click", function(){
     // Rimuovo display none alla prossima img e alla prossima didascalia
     img[activeImg].classList.remove("ms_none");
     textContainer[activeTxt].classList.remove("ms_none");
-    
 })
-// for (let i = 0; i < imagesArray.length; i++) {
-//     const thisImg = array[i];
-//     thisImg.classList.add("active")
-//     i++
-//     thisImg.classList.remove("active")
+
+const prevtBtn = document.querySelector(".prev");
+prevtBtn.addEventListener("click", function(){
+    // Rimetto display-none all'immagine e alla didascalia corrente
+    img[activeImg].classList.add("ms_none");
+    textContainer[activeTxt].classList.add("ms_none");
+    if (activeImg > 0) {
+        // passo alla precedente img
+        activeImg--;
+    } else{
+        activeImg = img.length - 1;
+    };
+
+    if (activeTxt > 0) {
+        // passo alla precedente img
+        activeTxt--;
+    } else{
+        activeTxt = textContainer.length - 1;
+    }
     
-// }
+    // Rimuovo display none alla ssima img e alla prossima didascalia
+    img[activeImg].classList.remove("ms_none");
+    textContainer[activeTxt].classList.remove("ms_none");
+})
+
+
+
+
+    
+
 
 
 
